@@ -15,6 +15,7 @@
         --purple-dark: #5b3da1;
         --menu-off: rgb(115, 115, 128);
         --menu-selected: linen;
+        --green-main: rgb(4, 211, 97);
     }
 
     * {
@@ -162,6 +163,27 @@
 }
 
 /* #endregion welcome */
+
+
+/* #region portfolio */
+    .projects-section {
+        background: linear-gradient(black, rgb(29, 28, 28));
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+
+        padding-top: 10rem;
+    }
+
+    .head-projects {
+        font-size: 4rem;
+        text-align: center;
+        width: 40%;
+        border-bottom: 1px solid var(--green-main);
+    }
+
+/* #endregion portfolio */
 </style>
 <body>
     <nav id="navbar" class="nav">
@@ -179,9 +201,11 @@
     </nav>
     <section id="welcome-section" class="welcome-section">
         <p class="welcome-intro">Hello! Welcome to my portfolio webpage!</p>
-        <p class="welcome-job">I'm <span class="fn-title un-top un">fast•ninja</span>, a <span class="web-dev-text">web depevolper</span></p>
+        <p class="welcome-job">I'm <span class="un"><span class="fn-title un-top">fast•ninja</span></span>, a <span class="web-dev-text">web depevolper</span></p>
     </section>
-    <section id="projects" class="projects-section"></section>
+    <section id="projects" class="projects-section">
+            <h2 class="head-projects">These are some of my projects</h2>
+    </section>
     <section id="contact" class="contact-section"></section>
     <footer></footer>
 </body>
