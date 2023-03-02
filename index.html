@@ -199,11 +199,48 @@
     }
 
     .project-link {
+        position: relative;
         display: flex;
-        width: 95%;
+        width: 100%;
         height: 400px;
-        border: 2px solid var(--green-main);
-        overflow: hidden;
+        border-radius: 0.4rem;
+        /* border: 2px solid var(--green-main); */
+        /* box-shadow: rgba(4, 211, 97, 0.501) 5px 5px 2.6px; */
+          
+        /* overflow: hidden; */
+    }
+
+    .project-link img {
+        border-radius: 0.4rem;
+    }
+
+    .project-folder {
+        height: 398px;
+        border-radius: 0.4rem;
+        width: 90%;
+        background: linear-gradient(black, rgb(29, 28, 28));;
+        z-index: 2;
+
+        transition: all 0.2s;
+    }
+
+    .project-shadow {
+        border-radius: 0.4rem;
+        position: absolute;
+        width: 87.7%;
+        height: 390px;
+        left:1.5px;
+        border-radius: 0.4rem;
+        background: var(--green-main);
+        box-shadow:  rgb(4, 211, 97) 13px 13px 3px -2px;
+        z-index: 1;
+
+    }
+
+
+    /* https://stackoverflow.com/questions/26656753/how-to-stop-shadow-effect-from-moving-using-pure-css */
+    .project-folder:hover {
+        transform: translateY(-0.2rem) translateX(-0.2rem);
     }
 
     .project-link img {
@@ -243,40 +280,46 @@
             <h2 class="head-projects">These are some of my projects</h2>
             <div class="grid-projects">
                 <div class="project-link">
-                    <a href="">
+                    <a class="project-folder" href="">
                         <img class="project-image" src="https://cdn.freecodecamp.org/testable-projects-fcc/images/tribute.jpg" alt="">
                         <p class="project-title">Habit tracker</p>
                     </a>
+                    <div class="project-shadow"></div>
                 </div>
                 <div class="project-link">
-                    <a href="">
+                    <a class="project-folder" href="">
                         <img class="project-image" src="https://cdn.freecodecamp.org/testable-projects-fcc/images/tribute.jpg" alt="">
                         <p class="project-title">Habit tracker</p>
                     </a>
+                    <div class="project-shadow"></div>
                 </div>
                 <div class="project-link">
-                    <a href="">
+                    <a class="project-folder" href="">
                         <img class="project-image" src="https://cdn.freecodecamp.org/testable-projects-fcc/images/tribute.jpg" alt="">
                         <p class="project-title">Habit tracker</p>
                     </a>
+                    <div class="project-shadow"></div>
                 </div>
                 <div class="project-link">
-                    <a href="">
+                    <a class="project-folder" href="">
                         <img class="project-image" src="https://cdn.freecodecamp.org/testable-projects-fcc/images/tribute.jpg" alt="">
                         <p class="project-title">Habit tracker</p>
                     </a>
+                    <div class="project-shadow"></div>
                 </div>
                 <div class="project-link">
-                    <a href="">
+                    <a class="project-folder" href="">
                         <img class="project-image" src="https://cdn.freecodecamp.org/testable-projects-fcc/images/tribute.jpg" alt="">
                         <p class="project-title">Habit tracker</p>
                     </a>
+                    <div class="project-shadow"></div>
                 </div>
                 <div class="project-link">
-                    <a href="">
+                    <a class="project-folder" href="">
                         <img class="project-image" src="https://cdn.freecodecamp.org/testable-projects-fcc/images/tribute.jpg" alt="">
                         <p class="project-title">Habit tracker</p>
                     </a>
+                    <div class="project-shadow"></div>
                 </div>
             </div>
             <a href="" class="btn"></a>
