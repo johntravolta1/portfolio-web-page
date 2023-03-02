@@ -33,7 +33,7 @@
 /* #region navbar */
 
     .nav {
-        width: 90%;
+        width: 100%;
         height: 4rem;
         background-color: rgb(61, 60, 66);
         padding:2rem 4rem 0 4rem;
@@ -42,11 +42,13 @@
         align-items: center;
 
         position: fixed;
+        box-shadow: 0 1px 0 var(--purple-dark);
     }
     .left-logo {
         display: flex;
         align-items: center;
         gap: 25px;
+        margin-bottom: 2rem;
     }
     .ninja-svg {
         width: 6rem;
@@ -60,11 +62,12 @@
         width: 30%;
         height: 100%;
         padding-right: 5rem;
+        margin-bottom: 2rem;
 
     }
     .menu-items {
         height: 100%;
-        width: 100%;
+        width: 80%;
         list-style-type: none;
         font-weight: 700;
         font-size: 1.3rem;
@@ -167,6 +170,7 @@
 
 /* #region portfolio */
     .projects-section {
+        box-sizing: border-box;
         background: linear-gradient(black, rgb(29, 28, 28));
         display: flex;
         flex-direction: column;
@@ -179,8 +183,40 @@
     .head-projects {
         font-size: 4rem;
         text-align: center;
-        width: 40%;
+        width: 80%;
         border-bottom: 1px solid var(--green-main);
+    }
+
+    .grid-projects {
+        width: 100%;
+        display: block;
+        padding: 0 20rem;
+        margin: 10rem auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 4rem 1rem;
+        box-sizing: border-box;
+    }
+
+    .project-link {
+        display: flex;
+        width: 95%;
+        height: 400px;
+        border: 2px solid var(--green-main);
+        overflow: hidden;
+    }
+
+    .project-link img {
+        width: 100%;
+        height: 85%;
+        object-fit: cover;
+    }
+
+    .project-title {
+        margin:1.5rem;
+        font-size: 2rem;
+        text-align: center;
+        line-height: 0.3rem;
     }
 
 /* #endregion portfolio */
@@ -205,8 +241,48 @@
     </section>
     <section id="projects" class="projects-section">
             <h2 class="head-projects">These are some of my projects</h2>
+            <div class="grid-projects">
+                <div class="project-link">
+                    <a href="">
+                        <img class="project-image" src="https://cdn.freecodecamp.org/testable-projects-fcc/images/tribute.jpg" alt="">
+                        <p class="project-title">Habit tracker</p>
+                    </a>
+                </div>
+                <div class="project-link">
+                    <a href="">
+                        <img class="project-image" src="https://cdn.freecodecamp.org/testable-projects-fcc/images/tribute.jpg" alt="">
+                        <p class="project-title">Habit tracker</p>
+                    </a>
+                </div>
+                <div class="project-link">
+                    <a href="">
+                        <img class="project-image" src="https://cdn.freecodecamp.org/testable-projects-fcc/images/tribute.jpg" alt="">
+                        <p class="project-title">Habit tracker</p>
+                    </a>
+                </div>
+                <div class="project-link">
+                    <a href="">
+                        <img class="project-image" src="https://cdn.freecodecamp.org/testable-projects-fcc/images/tribute.jpg" alt="">
+                        <p class="project-title">Habit tracker</p>
+                    </a>
+                </div>
+                <div class="project-link">
+                    <a href="">
+                        <img class="project-image" src="https://cdn.freecodecamp.org/testable-projects-fcc/images/tribute.jpg" alt="">
+                        <p class="project-title">Habit tracker</p>
+                    </a>
+                </div>
+                <div class="project-link">
+                    <a href="">
+                        <img class="project-image" src="https://cdn.freecodecamp.org/testable-projects-fcc/images/tribute.jpg" alt="">
+                        <p class="project-title">Habit tracker</p>
+                    </a>
+                </div>
+            </div>
+            <a href="" class="btn"></a>
     </section>
     <section id="contact" class="contact-section"></section>
     <footer></footer>
 </body>
+
 </html>
