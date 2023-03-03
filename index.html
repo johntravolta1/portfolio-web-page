@@ -43,6 +43,7 @@
 
         position: fixed;
         box-shadow: 0 1px 0 var(--purple-dark);
+        z-index: 5;
     }
     .left-logo {
         display: flex;
@@ -193,7 +194,7 @@
         padding: 0 20rem;
         margin: 10rem auto;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(350px, 0.7fr));
         gap: 4rem 1rem;
         box-sizing: border-box;
     }
@@ -220,27 +221,47 @@
         width: 90%;
         background: linear-gradient(black, rgb(29, 28, 28));;
         z-index: 2;
+        
+        /* when the mouse leaves this div */
+        transition: all .2s; 
+    }
 
-        transition: all 0.2s;
+    .project-folder:hover {
+        transition: all .2s;
+        transform: translateY(-0.11rem) translateX(-0.11rem);
+    }
+
+    .project-folder:active {
+        transition: all .1s;
+        transform: translateY(0.11rem) translateX(0.11rem);
+    }
+
+    .code {
+       color: transparent;
+       font-size: 1.4rem;
+       margin: 0.7rem;
+       margin-bottom: 1rem;
+    }
+
+    .project-folder:hover > .project-title > .code {
+        color: var(--green-main);
+        opacity: 0.5;
+        transition: 1s 
     }
 
     .project-shadow {
         border-radius: 0.4rem;
         position: absolute;
-        width: 87.7%;
-        height: 390px;
-        left:1.5px;
+        width: 89%;
+        height: 385px;
+        top:8px;
+        left:-5px;
         border-radius: 0.4rem;
-        background: var(--green-main);
-        box-shadow:  rgb(4, 211, 97) 13px 13px 3px -2px;
+        background: transparent;
+        /* offset-x | offset-y | blur-radius | spread-radius | color */
+        box-shadow:   10px 5px 10px 0px rgb(4, 211, 97); 
         z-index: 1;
 
-    }
-
-
-    /* https://stackoverflow.com/questions/26656753/how-to-stop-shadow-effect-from-moving-using-pure-css */
-    .project-folder:hover {
-        transform: translateY(-0.2rem) translateX(-0.2rem);
     }
 
     .project-link img {
@@ -256,6 +277,14 @@
         line-height: 0.3rem;
     }
 
+
+
+    .code:hover {
+        color: var(--green-main);
+        opacity: 0.5;
+        transition: .2s 
+    }
+
 /* #endregion portfolio */
 </style>
 <body>
@@ -266,9 +295,9 @@
         </div>
         <div class="right-menu">
             <ul class="menu-items">
-                <li class="menu-item menu-selected-example-about un"><a href="">About</a></li>
-                <li class="menu-item menu-selected-example-projects un"><a href="">Projects</a></li>
-                <li class="menu-item menu-selected-example-contact un"><a href="">Contact</a></li>
+                <li class="menu-item menu-selected-example-about un"><a href="#welcome-section">About</a></li>
+                <li class="menu-item menu-selected-example-projects un"><a href="#projects">Projects</a></li>
+                <li class="menu-item menu-selected-example-contact un"><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -280,44 +309,68 @@
             <h2 class="head-projects">These are some of my projects</h2>
             <div class="grid-projects">
                 <div class="project-link">
-                    <a class="project-folder" href="">
+                    <a class="project-folder" href="#projects">
                         <img class="project-image" src="https://cdn.freecodecamp.org/testable-projects-fcc/images/tribute.jpg" alt="">
-                        <p class="project-title">Habit tracker</p>
+                        <p class="project-title">
+                            <span class="code">&#60</span>
+                            Habit tracker
+                            <span class="code">/&#62</span>
+                        </p>
                     </a>
                     <div class="project-shadow"></div>
                 </div>
                 <div class="project-link">
-                    <a class="project-folder" href="">
+                    <a class="project-folder" href="#projects">
                         <img class="project-image" src="https://cdn.freecodecamp.org/testable-projects-fcc/images/tribute.jpg" alt="">
-                        <p class="project-title">Habit tracker</p>
+                        <p class="project-title">
+                            <span class="code">&#60</span>
+                            Habit tracker
+                            <span class="code">/&#62</span>
+                        </p>
                     </a>
                     <div class="project-shadow"></div>
                 </div>
                 <div class="project-link">
-                    <a class="project-folder" href="">
+                    <a class="project-folder" href="#projects">
                         <img class="project-image" src="https://cdn.freecodecamp.org/testable-projects-fcc/images/tribute.jpg" alt="">
-                        <p class="project-title">Habit tracker</p>
+                        <p class="project-title">
+                            <span class="code">&#60</span>
+                            Habit tracker
+                            <span class="code">/&#62</span>
+                        </p>
                     </a>
                     <div class="project-shadow"></div>
                 </div>
                 <div class="project-link">
-                    <a class="project-folder" href="">
+                    <a class="project-folder" href="#projects">
                         <img class="project-image" src="https://cdn.freecodecamp.org/testable-projects-fcc/images/tribute.jpg" alt="">
-                        <p class="project-title">Habit tracker</p>
+                        <p class="project-title">
+                            <span class="code">&#60</span>
+                            Habit tracker
+                            <span class="code">/&#62</span>
+                        </p>
                     </a>
                     <div class="project-shadow"></div>
                 </div>
                 <div class="project-link">
-                    <a class="project-folder" href="">
+                    <a class="project-folder" href="#projects">
                         <img class="project-image" src="https://cdn.freecodecamp.org/testable-projects-fcc/images/tribute.jpg" alt="">
-                        <p class="project-title">Habit tracker</p>
+                        <p class="project-title">
+                            <span class="code">&#60</span>
+                            Habit tracker
+                            <span class="code">/&#62</span>
+                        </p>
                     </a>
                     <div class="project-shadow"></div>
                 </div>
                 <div class="project-link">
-                    <a class="project-folder" href="">
+                    <a class="project-folder" href="#projects">
                         <img class="project-image" src="https://cdn.freecodecamp.org/testable-projects-fcc/images/tribute.jpg" alt="">
-                        <p class="project-title">Habit tracker</p>
+                        <p class="project-title">
+                            <span class="code">&#60</span>
+                            Habit tracker
+                            <span class="code">/&#62</span>
+                        </p>
                     </a>
                     <div class="project-shadow"></div>
                 </div>
