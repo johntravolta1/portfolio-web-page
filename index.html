@@ -11,11 +11,14 @@
 </head>
 <style>
     :root {
+        --black: rgb(18, 18, 20);
+        --gray: rgb(61, 60, 66);
         --purple-main: #8257E6;
         --purple-dark: #5b3da1;
         --menu-off: rgb(115, 115, 128);
         --menu-selected: linen;
         --green-main: rgb(4, 211, 97);
+        --small-title: rgba(255, 255, 255, 0.455);
     }
 
     * {
@@ -24,18 +27,41 @@
     body {
         height: 100vh;
         overflow-x: hidden;
-        background: linear-gradient( rgb(61, 60, 66) 30%, rgb(100, 99, 99));
         font-family: 'Roboto', sans-serif;
         
         color: linen;
     }
+    
+.title-large {
+    font-size: 4.5rem;
+    font-weight: bold;
+}
+
+.title-medium {
+    font-family: 'Poppins', 'Roboto', sans-serif;
+    font-size: 1.8rem;
+}
+.title-small {
+    font-family: 'Poppins', 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--small-title);
+}
+
+.mt-1 {
+    margin-top: 1rem;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
 
 /* #region navbar */
 
     .nav {
         width: 100%;
         height: 4rem;
-        background-color: rgb(61, 60, 66);
+        background-color: var(--gray);
         padding:2rem 4rem 0 4rem;
         display: flex;
         justify-content: space-between;
@@ -86,7 +112,7 @@
         height: 100%;
     }
 
-    .menu-item:hover {
+    .menu-item:hover, .menu-item.active {
         cursor: pointer;
         color: linen;
         transition: all 0.5s;
@@ -94,6 +120,7 @@
 
     .un {
         padding-bottom:2px;
+        border-radius: 2px;
         background-image: linear-gradient(var(--purple-main) 0 0);
         background-position: 0 100%; /*OR bottom left*/
         background-size: 0px 2px;
@@ -103,7 +130,7 @@
         background-position 0s 0.3s; /*change after the size immediately*/
     }
 
-    .un:hover {
+    .un:hover, .un.active {
         background-position: 100% 100%; /*OR bottom right*/
         background-size: 100% 2px;
     }
@@ -143,17 +170,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.welcome-intro {
-    font-size: 4.5rem;
-    font-weight: bold;
-}
-
-.welcome-job {
-    font-family: 'Poppins', 'Roboto', sans-serif;
-    font-size: 1.8rem;
-    margin-top: 2rem;
+    
+    background: linear-gradient( rgb(61, 60, 66) 30%, rgb(100, 99, 99));
 }
 
 .fn-title {
@@ -170,9 +188,11 @@
 
 
 /* #region portfolio */
+
     .projects-section {
         box-sizing: border-box;
         background: linear-gradient(black, rgb(29, 28, 28));
+        /* background: linen; */
         display: flex;
         flex-direction: column;
         justify-items: center;
@@ -218,6 +238,7 @@
     .project-folder {
         height: 398px;
         border-radius: 0.4rem;
+        border: 0.1px solid black;
         width: 90%;
         background: linear-gradient(black, rgb(29, 28, 28));;
         z-index: 2;
@@ -241,12 +262,21 @@
        font-size: 1.4rem;
        margin: 0.7rem;
        margin-bottom: 1rem;
+
+       /* mouse leaves */
+       transition: all 1s;
+    }
+
+    .code:hover {
+        color: var(--green-main);
+        opacity: 0.9;
+        transition: .2s 
     }
 
     .project-folder:hover > .project-title > .code {
         color: var(--green-main);
-        opacity: 0.5;
-        transition: 1s 
+        opacity: 0.9;
+        transition: 1.4s 
     }
 
     .project-shadow {
@@ -255,11 +285,11 @@
         width: 89%;
         height: 385px;
         top:8px;
-        left:-5px;
+        left:0px;
         border-radius: 0.4rem;
         background: transparent;
         /* offset-x | offset-y | blur-radius | spread-radius | color */
-        box-shadow:   10px 5px 10px 0px rgb(4, 211, 97); 
+        box-shadow:   7px 7px 10px 0px rgb(4, 211, 97); 
         z-index: 1;
 
     }
@@ -271,21 +301,141 @@
     }
 
     .project-title {
-        margin:1.5rem;
+        margin:1.5rem auto;
         font-size: 2rem;
         text-align: center;
         line-height: 0.3rem;
     }
 
-
-
-    .code:hover {
-        color: var(--green-main);
-        opacity: 0.5;
-        transition: .2s 
+    .btn {
+        box-sizing: border-box;
+        width: 250px;
+        height: 60px;
+        border-radius: 4px;
+        border: 1px solid black;
+        background-color: var(--gray);
+        
     }
 
+    .btn-show-all:hover {
+        /* background:var(--purple-main); */
+        /* transition: all 0.5s;
+        border: 0.1px solid var(--purple-dark); */
+        /* transition: all 0.5s;
+        box-shadow: 0px 2px 2px linen; */
+
+        /* animation for controlling all colors be possible, since transition was passing throught white color */
+        animation-name: btn-border-color;
+        animation-duration: 0.18s;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes btn-border-color {
+        0% {border-color: black;}
+        50% {border-color:rgb(82, 32, 109);}
+        100% {border-color: var(--purple-main);}
+    }
+
+    .btn-show-all:hover > .fa-solid.fa-circle-arrow-right {
+        transition: all 0.5s;
+        transform: translateX(0.3rem);
+    }
+    
+    /* mouse leaves */
+    .fa-solid.fa-circle-arrow-right {
+        transition: all 0.5s; 
+    }
+
+    .btn-show-all {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10rem;
+    }
+
+    .btn-show-text {
+        margin-right: 1rem;
+        font-size: 1.5rem;
+    }
 /* #endregion portfolio */
+
+/* #region contacts */
+.contact-section {
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgb(100, 99, 99), rgb(61, 60, 66) 30%);
+}
+
+.contacts-links {
+    font-size: 1.5rem;
+    margin-top: 5rem;
+    width: 55rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contact-details {
+    padding: 5px;
+    border-radius: 1rem;
+    /* Hover effect from: https://css-tricks.com/css-hover-effects-background-masks-3d/ */
+    --b: 0.25rem;   /* the thickness of the line */
+    --c: var(--purple-main ); /* the color */
+    color: #0000;
+    padding-block: var(--b);
+    background: 
+        linear-gradient(linen 50%,linen 0) 0% calc(100% - var(--_p,0%))/100% 200%,
+        linear-gradient(var(--c) 0 0) 0% var(--_p,0%)/var(--_p,0%) var(--b) no-repeat;
+    -webkit-background-clip: text,padding-box;
+            background-clip: text,padding-box;
+    transition: .3s var(--_s,0s) linear,background-size .3s calc(.3s - var(--_s,0s));
+}
+.contact-details:hover {
+    --_p: 100%;
+    --_s: .3s;
+}
+.icon-color-hover {
+    padding: 5px;
+    --b: 0rem;   /* the thickness of the line */
+    --c: var(--green-main); /* the color */
+    color: #0000;
+    padding-block: var(--b);
+    background: 
+        linear-gradient(var(--c) 50%,linen 0) 0% calc(100% - var(--_p,0%))/100% 200%,
+        linear-gradient(var(--c) 0 0) 0% var(--_p,0%)/var(--_p,0%) var(--b) no-repeat;
+    -webkit-background-clip: text,padding-box;
+            background-clip: text,padding-box;
+    transition: .3s var(--_s,0s) linear,background-size .3s calc(.3s - var(--_s,0s));
+}
+.icon-color-hover:hover {
+    --_p: 100%;
+    --_s: .3s;
+}
+/* #endregion contact */
+
+/* #region footer */
+.footer-section {      
+    font-family: 'Poppins'; 
+    box-sizing: border-box; 
+    width: 100%;
+    height: 5rem;
+    box-shadow: 0 -2px 10px 1px var(--green-main);
+    background: var(--black);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/* #endregion footer */
+
+
 </style>
 <body>
     <nav id="navbar" class="nav">
@@ -295,15 +445,15 @@
         </div>
         <div class="right-menu">
             <ul class="menu-items">
-                <li class="menu-item menu-selected-example-about un"><a href="#welcome-section">About</a></li>
-                <li class="menu-item menu-selected-example-projects un"><a href="#projects">Projects</a></li>
-                <li class="menu-item menu-selected-example-contact un"><a href="#contact">Contact</a></li>
+                <li class="menu-item un"><a href="#welcome-section">About</a></li>
+                <li class="menu-item un"><a href="#projects">Projects</a></li>
+                <li class="menu-item un"><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
     <section id="welcome-section" class="welcome-section">
-        <p class="welcome-intro">Hello! Welcome to my portfolio webpage!</p>
-        <p class="welcome-job">I'm <span class="un"><span class="fn-title un-top">fast•ninja</span></span>, a <span class="web-dev-text">web depevolper</span></p>
+        <p class="title-large">Hello! Welcome to my portfolio webpage!</p>
+        <p class="title-medium mt-2">I'm <span class="un"><span class="fn-title un-top"><a href="mailto:example@example.com">fast•ninja</a></span></span>, a <span class="web-dev-text">web depevolper</span></p>
     </section>
     <section id="projects" class="projects-section">
             <h2 class="head-projects">These are some of my projects</h2>
@@ -375,10 +525,62 @@
                     <div class="project-shadow"></div>
                 </div>
             </div>
-            <a href="" class="btn"></a>
+            <a href="" class="btn btn-show-all">
+                <span class="btn-show-text">Show all</span>
+                <i class="fa-solid fa-circle-arrow-right"></i>
+            </a>
     </section>
-    <section id="contact" class="contact-section"></section>
-    <footer></footer>
-</body>
+    <section id="contact" class="contact-section">
 
+        <p class="title-large">Let's work thogether</p>
+        <p class="title-small">Please use any of the contacts below to get in touch!</p>
+
+        <div class="contacts-links">
+                <a href="https://facebook.com/freecodecamp" target="_blank" class="contact-details"><i class="fab fa-facebook-square icon-color-hover icon-color-hover"></i> Facebook</a> 
+                <a id="profile-link" href="https://github.com/freecodecamp" target="_blank" class="contact-details"><i class="fab fa-github icon-color-hover"></i> GitHub</a>
+                <a href="https://twitter.com/freecodecamp" target="_blank" class="contact-details"><i class="fab fa-twitter icon-color-hover"></i> Twitter</a>
+                <a href="https://linkedin.com" target="_blank" class="contact-details"><i class="fab fa-linkedin icon-color-hover"></i> LinkedIn</a>
+                <a href="mailto:example@example.com" class="contact-details"><i class="fas fa-at icon-color-hover"></i> Send a mail</a>
+                <a href="tel:555-555-5555" class="contact-details"><i class="fas fa-mobile-alt icon-color-hover"></i> Call me</a>
+        </div>
+    </section>
+    <footer class="footer-section">
+        <div class="disclaimer">This portfolio was inspired by <a href="https://www.freecodecamp.com/" target="_blank">freeCodeCamp <i class="fab fa-free-code-camp"></i></a></div>
+        <div class="copyright">© Copyright <span id="current-year"></span></div>
+    </footer>
+    <script src="https://kit.fontawesome.com/778fdc401a.js" crossorigin="anonymous"></script>
+    
+    <script>
+            //place current year on footer
+            var currentYear = new Date().getFullYear();
+            document.getElementById("current-year").textContent = currentYear;
+
+            //highligth current menu section 
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav div ul li a');
+            
+            console.log('sections:', sections);
+            console.log('navlinks:', navLinks);
+            window.addEventListener('scroll', () => {
+                let current = '';
+  
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                        current = section.getAttribute('id');
+                    }
+
+                    console.log(current)
+                });
+  
+                navLinks.forEach(link => {
+                    link.parentNode.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.parentNode.classList.add('active');
+                    }
+                });
+            });
+    </script>
+</body>
 </html>
