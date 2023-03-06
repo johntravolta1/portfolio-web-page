@@ -39,6 +39,7 @@
 .title-large {
     font-size: 4.5rem;
     font-weight: bold;
+    text-align: center;
 }
 
 .title-medium {
@@ -74,7 +75,9 @@
         position: fixed;
         box-shadow: 0 1px 0 var(--purple-dark);
         z-index: 5;
+        transition: 1s;
     }
+
     .left-logo {
         display: flex;
         align-items: center;
@@ -88,14 +91,16 @@
         font-family: 'Climate Crisis', cursive;
         font-size: 2rem;
         font-weight: normal;
+
     }
     .right-menu {
         width: 30%;
         height: 100%;
         padding-right: 5rem;
         margin-bottom: 2rem;
-
+        
     }
+
     .menu-items {
         height: 100%;
         width: 80%;
@@ -121,6 +126,53 @@
         color: linen;
         transition: all 0.5s;
     }
+
+    .btn-hamburguer {
+        display: none;
+        box-sizing: border-box;
+        border: 1px solid var(--purple-dark);
+        width: 60px;
+        height: 60px;
+        background-color: var(--gray);
+        box-shadow: 0px 0px 3px var(--purple-main);
+
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: -10rem;
+        top: 1rem;
+        cursor: pointer;
+
+        display: none;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 2px;
+        flex-direction: row;
+    }
+
+    .hamburguer {
+        box-sizing: border-box;
+        display: block;
+        width: 90%;
+        border-top: 2px solid var(--purple-main);
+        margin-top: 11px;
+
+    }
+
+    .hamburguer::after, .hamburguer::before {
+        box-sizing: border-box;
+        content: '';
+        display: block;
+        width: 100%;
+        border-top: 2px solid var(--purple-main);
+        margin-top:14px;
+        position: relative;
+        transition: 0.4s;
+    }
+    
+    
+
 
     .un {
         padding-bottom:2px;
@@ -159,9 +211,7 @@
         text-decoration: none;
         color: inherit;
     }
-    /* .menu-selected-example-contact {
-        color: var(--menu-selected)
-    } */
+
 
     /* #endregion navbar */
 
@@ -379,10 +429,13 @@
 .contacts-links {
     font-size: 1.5rem;
     margin-top: 5rem;
-    width: 55rem;
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    text-align: center;
+    justify-content: center;
+    max-width: 60rem;
 }
 
 .contact-details {
@@ -440,14 +493,128 @@
 /* #endregion footer */
 
 
+/* #region mediaqueries */
+
+
+@media (max-width: 1375px) {
+        .grid-projects {
+            grid-template-columns: minmax(320px, 1fr);
+        }
+    }
+
+@media (max-width: 1150px) {
+        .right-menu {
+            transition: 1s;
+            padding-right: 18rem;
+        }
+
+        .fast-ninja {
+            width:12rem;
+        }
+
+        .grid-projects {
+            padding: 0 15rem;
+        }
+    }
+    @media (max-width: 750px) {
+
+        .btn-hamburguer {
+            display: flex;
+        }
+        .right-menu {
+            border: 1px solid var(--purple-main);
+            border-radius: 5px;
+            padding: 2rem;            
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            visibility: hidden;
+            overflow-y: hidden;
+
+            position: absolute;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: -10rem;
+            top: 5.5rem;    
+            width: 7rem;
+            height: 0;
+            background: linear-gradient(45deg, rgb(61, 60, 66) 50%, rgb(100, 99, 99));
+
+            transition: 0.5s;
+        }   
+
+        .btn-hamburguer::after {
+            content: '';
+            
+            width: 50px;
+            height: 50px;
+            background: transparent;
+            position: absolute;
+            top:4.4rem;
+            z-index: -1;
+            transform: rotate(45deg);
+
+            visibility: hidden;
+            transition: 0.5s;
+        }
+
+        .right-menu.active {
+            visibility: visible;
+            height: 10rem;
+        }
+
+        .right-menu.acitve .menu-item {
+            visibility: visible;
+        }
+
+        .btn-hamburguer.active::after {
+            visibility: visible;
+            border: 1px solid var(--purple-main);
+            background: linear-gradient(var(--purple-dark), var(--purple-main));
+        }
+
+        .btn-hamburguer.active .hamburguer {
+            border-top-color: transparent;
+        }
+
+        .btn-hamburguer.active .hamburguer::before {
+            transform: rotate(135deg);
+        }
+
+        .btn-hamburguer.active .hamburguer::after {
+            transform: rotate(-135deg);
+            top: -15px;
+        }
+
+        .menu-items {
+            padding-left: 0;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        
+        .grid-projects {
+            padding: 0 5rem;
+        }
+    }
+
+/* #endregion mediaqueries */
+
 </style>
 <body>
     <nav id="navbar" class="nav">
+        <button id="btn-hamburguer" class="btn-hamburguer">
+            <span class="hamburguer"></span>
+        </button>
         <div class="left-logo">
             <img src="ninja_working_at_desk_purple.svg" alt="ninja logo" srcset="" class="ninja-svg">
             <strong class="fast-ninja">F A S T • N I N J A</strong>
         </div>
-        <div class="right-menu">
+        <div id="right-menu" class="right-menu">
             <ul class="menu-items">
                 <li class="menu-item un"><a href="#welcome-section">About</a></li>
                 <li class="menu-item un"><a href="#projects">Projects</a></li>
@@ -555,36 +722,50 @@
     <script src="https://kit.fontawesome.com/778fdc401a.js" crossorigin="anonymous"></script>
     
     <script>
-            //place current year on footer
-            var currentYear = new Date().getFullYear();
-            document.getElementById("current-year").textContent = currentYear;
+        //place current year on footer
+        var currentYear = new Date().getFullYear();
+        document.getElementById("current-year").textContent = currentYear;
 
-            //highligth current menu section 
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('nav div ul li a');
-            
-            console.log('sections:', sections);
-            console.log('navlinks:', navLinks);
-            window.addEventListener('scroll', () => {
-                let current = '';
-  
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    if (pageYOffset >= sectionTop - sectionHeight / 3) {
-                        current = section.getAttribute('id');
-                    }
+        // #region highligth current menu section 
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav div ul li a');
+        
+        console.log('sections:', sections);
+        console.log('navlinks:', navLinks);
+        window.addEventListener('scroll', () => {
+            let current = '';
 
-                    console.log(current)
-                });
-  
-                navLinks.forEach(link => {
-                    link.parentNode.classList.remove('active');
-                    if (link.getAttribute('href').includes(current)) {
-                        link.parentNode.classList.add('active');
-                    }
-                });
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                    current = section.getAttribute('id');
+                }
+
+                console.log(current)
             });
-    </script>
+
+            navLinks.forEach(link => {
+                link.parentNode.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.parentNode.classList.add('active');
+                }
+            });
+        });
+        // #endregion highligth current menu section
+        
+        // #region responsive hamburguer button
+        var hamburguerButton = document.getElementById("btn-hamburguer")
+        var rightMenu = document.getElementById("right-menu")
+        
+        function handleToggleMenu() {
+            rightMenu.classList.toggle("active");
+            hamburguerButton.classList.toggle("active");
+        }
+        
+        hamburguerButton.addEventListener('click', handleToggleMenu);
+        
+        // #endregion responsive hamburguer button
+   </script>
 </body>
 </html>
