@@ -61,11 +61,16 @@
     margin-top: 2rem;
 }
 
+.txt-align-center {
+    text-align: center;
+}
+
 /* #region navbar */
 
     .nav {
+        box-sizing: border-box;
         width: 100%;
-        height: 4rem;
+        height: 96px;
         background-color: var(--gray);
         padding:2rem 4rem 0 4rem;
         display: flex;
@@ -121,7 +126,7 @@
         height: 100%;
     }
 
-    .menu-item:hover, .menu-item.active {
+    .menu-item:hover, .menu-item.link-menu-active {
         cursor: pointer;
         color: linen;
         transition: all 0.5s;
@@ -136,12 +141,13 @@
         background-color: var(--gray);
         box-shadow: 0px 0px 3px var(--purple-main);
 
-        position: absolute;
+        /* position: absolute;
         margin-left: auto;
         margin-right: auto;
         left: 0;
         right: -10rem;
-        top: 1rem;
+        top: 1rem; */
+
         cursor: pointer;
 
         display: none;
@@ -186,7 +192,7 @@
         background-position 0s 0.3s; /*change after the size immediately*/
     }
 
-    .un:hover, .un.active {
+    .un:hover, .un.link-menu-active {
         background-position: 100% 100%; /*OR bottom right*/
         background-size: 100% 2px;
     }
@@ -217,7 +223,7 @@
 
 
 /* #region welcome */
-.welcome-section {
+.welcome {
     height: 100vh;
     width: 100%;
     display: flex;
@@ -516,15 +522,22 @@
             padding: 0 15rem;
         }
     }
-    @media (max-width: 750px) {
 
+    @media (max-width: 750px) {
+        html {
+            font-size: 14px;
+        }
         .btn-hamburguer {
             display: flex;
+            margin-left:8rem;
         }
         .right-menu {
             border: 1px solid var(--purple-main);
             border-radius: 5px;
             padding: 2rem;            
+
+            width: 8rem;
+            height: 1rem;
 
             display: flex;
             align-items: center;
@@ -537,20 +550,31 @@
             margin-left: auto;
             margin-right: auto;
             left: 0;
-            right: -10rem;
-            top: 5.5rem;    
-            width: 7rem;
-            height: 0;
+            right: -15rem;
+            top: 6.5rem;    
+
             background: linear-gradient(45deg, rgb(61, 60, 66) 50%, rgb(100, 99, 99));
 
             transition: 0.5s;
         }   
 
+        .menu-items {
+            padding-left: 0;
+            padding-top:1rem;
+            padding-bottom:1rem;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            visibility: hidden;
+            overflow-y: hidden;
+        }
+
         .btn-hamburguer::after {
             content: '';
             
-            width: 50px;
-            height: 50px;
+            width: 5px;
+            height: 5px;
             background: transparent;
             position: absolute;
             top:4.4rem;
@@ -558,7 +582,7 @@
             transform: rotate(45deg);
 
             visibility: hidden;
-            transition: 0.5s;
+            transition: 1s;
         }
 
         .right-menu.active {
@@ -566,14 +590,18 @@
             height: 10rem;
         }
 
-        .right-menu.acitve .menu-item {
+        .menu-items.active {
             visibility: visible;
+            /* overflow-y: auto; */
         }
 
         .btn-hamburguer.active::after {
             visibility: visible;
             border: 1px solid var(--purple-main);
             background: linear-gradient(var(--purple-dark), var(--purple-main));
+            width: 50px;
+            height: 50px;
+            transition: 1s;
         }
 
         .btn-hamburguer.active .hamburguer {
@@ -588,17 +616,33 @@
             transform: rotate(-135deg);
             top: -15px;
         }
-
-        .menu-items {
-            padding-left: 0;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
         
         .grid-projects {
             padding: 0 5rem;
+        }
+    }
+
+    @media (max-width: 535px) {
+        .left-logo {
+            gap: 1%;
+        }
+        .btn-hamburguer {
+            margin-left:0;
+            transition: 0.5s;
+        }
+        .btn-hamburguer::after {
+            content: '';
+            
+            width: 50px;
+            height: 50px;
+            background: transparent;
+            position: absolute;
+            top:5.5rem;
+            z-index: 1;
+            transform: rotate(45deg);
+
+            visibility: hidden;
+            transition: 0.5s;
         }
     }
 
@@ -607,24 +651,24 @@
 </style>
 <body>
     <nav id="navbar" class="nav">
-        <button id="btn-hamburguer" class="btn-hamburguer">
-            <span class="hamburguer"></span>
-        </button>
         <div class="left-logo">
             <img src="ninja_working_at_desk_purple.svg" alt="ninja logo" srcset="" class="ninja-svg">
             <strong class="fast-ninja">F A S T • N I N J A</strong>
+            <button id="btn-hamburguer" class="btn-hamburguer">
+                <span class="hamburguer"></span>
+            </button>
         </div>
         <div id="right-menu" class="right-menu">
-            <ul class="menu-items">
-                <li class="menu-item un"><a href="#welcome-section">About</a></li>
+            <ul id="menu-items" class="menu-items">
+                <li class="menu-item un"><a href="#welcome">About</a></li>
                 <li class="menu-item un"><a href="#projects">Projects</a></li>
                 <li class="menu-item un"><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
-    <section id="welcome-section" class="welcome-section">
+    <section id="welcome" class="welcome">
         <p class="title-large">Hello! Welcome to my portfolio webpage!</p>
-        <p class="title-medium mt-2">I'm <span class="un"><span class="fn-title un-top"><a href="mailto:example@example.com">fast•ninja</a></span></span>, a <span class="web-dev-text">web depevolper</span></p>
+        <p class="title-medium mt-2 txt-align-center">I'm <span class="un"><span class="fn-title un-top"><a href="mailto:example@example.com">fast•ninja</a></span></span>, a <span class="web-dev-text">web depevolper</span></p>
     </section>
     <section id="projects" class="projects-section">
             <h2 class="head-projects">These are some of my projects</h2>
@@ -704,7 +748,7 @@
     <section id="contact" class="contact-section">
 
         <p class="title-large">Let's work thogether</p>
-        <p class="title-small">Please use any of the contacts below to get in touch!</p>
+        <p class="title-small txt-align-center">Please use any of the contacts below to get in touch!</p>
 
         <div class="contacts-links">
                 <a href="https://facebook.com/freecodecamp" target="_blank" class="contact-details"><i class="fab fa-facebook-square icon-color-hover icon-color-hover"></i> Facebook</a> 
@@ -726,41 +770,44 @@
         var currentYear = new Date().getFullYear();
         document.getElementById("current-year").textContent = currentYear;
 
-        // #region highligth current menu section 
+
+        // #region section mapper (https://gist.github.com/khuongyolo/4e7d8308c01733961f7ad0c9964db591)
+
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('nav div ul li a');
-        
-        console.log('sections:', sections);
-        console.log('navlinks:', navLinks);
-        window.addEventListener('scroll', () => {
-            let current = '';
+            window.addEventListener('scroll', navHighLighter)
 
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - sectionHeight / 3) {
-                    current = section.getAttribute('id');
-                }
-
-                console.log(current)
+        function navHighLighter() {            
+            sections.forEach(current => {
+              const sectionHeight = current.offsetHeight;
+          
+              const sectionTop = (current.getBoundingClientRect().top + window.pageYOffset) - 50;
+              sectionId = current.getAttribute("id");
+              console.log(sectionId)
+              if (
+                scrollY > sectionTop &&
+                scrollY <= sectionTop + sectionHeight
+              ){
+                  Array.from(navLinks).filter(f => f.getAttribute("href").includes(sectionId))[0].parentNode.classList.add('link-menu-active')
+              } else {
+                  Array.from(navLinks).filter(f => f.getAttribute("href").includes(sectionId))[0].parentNode.classList.remove('link-menu-active')
+              }
             });
+        }
 
-            navLinks.forEach(link => {
-                link.parentNode.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.parentNode.classList.add('active');
-                }
-            });
-        });
-        // #endregion highligth current menu section
-        
+        // #endregion section mapper
+
+
+
         // #region responsive hamburguer button
         var hamburguerButton = document.getElementById("btn-hamburguer")
         var rightMenu = document.getElementById("right-menu")
+        var menuItems = document.getElementById("menu-items")
         
         function handleToggleMenu() {
             rightMenu.classList.toggle("active");
             hamburguerButton.classList.toggle("active");
+            menuItems.classList.toggle("active")
         }
         
         hamburguerButton.addEventListener('click', handleToggleMenu);
