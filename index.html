@@ -27,6 +27,7 @@
 
     * {
         margin: 0;
+        box-sizing: border-box;
     }
     body {
         height: 100vh;
@@ -141,13 +142,6 @@
         background-color: var(--gray);
         box-shadow: 0px 0px 3px var(--purple-main);
 
-        /* position: absolute;
-        margin-left: auto;
-        margin-right: auto;
-        left: 0;
-        right: -10rem;
-        top: 1rem; */
-
         cursor: pointer;
 
         display: none;
@@ -253,6 +247,7 @@
         box-sizing: border-box;
         background: linear-gradient(black, rgb(29, 28, 28));
         /* background: linen; */
+        padding: 0 1rem;
         display: flex;
         flex-direction: column;
         justify-items: center;
@@ -270,14 +265,17 @@
 
     .grid-projects {
         width: 100%;
+        max-width: 1280px;
         display: block;
-        padding: 0 20rem;
+        /* padding: 0 20rem; */
         margin: 10rem auto;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(350px, 0.7fr));
         gap: 4rem 1rem;
         box-sizing: border-box;
+        /* place-items: center center; */
     }
+
 
     .project-link {
         position: relative;
@@ -502,11 +500,11 @@
 /* #region mediaqueries */
 
 
-@media (max-width: 1375px) {
+/* @media (max-width: 1375px) {
         .grid-projects {
             grid-template-columns: minmax(320px, 1fr);
         }
-    }
+    } */
 
 @media (max-width: 1150px) {
         .right-menu {
@@ -517,10 +515,10 @@
         .fast-ninja {
             width:12rem;
         }
-
+/* 
         .grid-projects {
             padding: 0 15rem;
-        }
+        } */
     }
 
     @media (max-width: 750px) {
@@ -617,9 +615,9 @@
             top: -15px;
         }
         
-        .grid-projects {
+        /* .grid-projects {
             padding: 0 5rem;
-        }
+        } */
     }
 
     @media (max-width: 535px) {
@@ -660,9 +658,9 @@
         </div>
         <div id="right-menu" class="right-menu">
             <ul id="menu-items" class="menu-items">
-                <li class="menu-item un"><a href="#welcome">About</a></li>
-                <li class="menu-item un"><a href="#projects">Projects</a></li>
-                <li class="menu-item un"><a href="#contact">Contact</a></li>
+                <li class="menu-item un"><a class="navlinks" href="#welcome">About</a></li>
+                <li class="menu-item un"><a class="navlinks" href="#projects">Projects</a></li>
+                <li class="menu-item un"><a class="navlinks" href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -774,8 +772,9 @@
         // #region section mapper (https://gist.github.com/khuongyolo/4e7d8308c01733961f7ad0c9964db591)
 
         const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('nav div ul li a');
-            window.addEventListener('scroll', navHighLighter)
+        const navLinks = document.getElementsByClassName('navlinks');
+        
+        window.addEventListener('scroll', navHighLighter)
 
         function navHighLighter() {            
             sections.forEach(current => {
