@@ -73,10 +73,10 @@
         width: 100%;
         height: 96px;
         background-color: var(--gray);
-        padding:2rem 4rem 0 4rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 0 1rem;
 
         position: fixed;
         box-shadow: 0 1px 0 var(--purple-dark);
@@ -88,7 +88,6 @@
         display: flex;
         align-items: center;
         gap: 25px;
-        margin-bottom: 2rem;
     }
     .ninja-svg {
         width: 6rem;
@@ -100,10 +99,8 @@
 
     }
     .right-menu {
-        width: 30%;
+        width: 90%;
         height: 100%;
-        padding-right: 5rem;
-        margin-bottom: 2rem;
         
     }
 
@@ -134,45 +131,19 @@
     }
 
     .btn-hamburguer {
-        display: none;
-        box-sizing: border-box;
-        border: 1px solid var(--purple-dark);
-        width: 60px;
-        height: 60px;
-        background-color: var(--gray);
-        box-shadow: 0px 0px 3px var(--purple-main);
-
-        cursor: pointer;
-
-        display: none;
-        align-items: flex-start;
-        justify-content: center;
-        gap: 2px;
-        flex-direction: row;
-    }
-
-    .hamburguer {
-        box-sizing: border-box;
-        display: block;
-        width: 90%;
-        border-top: 2px solid var(--purple-main);
-        margin-top: 11px;
-
-    }
-
-    .hamburguer::after, .hamburguer::before {
-        box-sizing: border-box;
-        content: '';
-        display: block;
-        width: 100%;
-        border-top: 2px solid var(--purple-main);
-        margin-top:14px;
         position: relative;
-        transition: 0.4s;
-    }
-    
-    
+        box-sizing: border-box;
+        border: none;
+        width: 35%;
+        min-width:380px;
+        height: 70%;
+        margin-right: 5rem;
+        background-color: var(--gray);
 
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }   
 
     .un {
         padding-bottom:2px;
@@ -266,14 +237,13 @@
     .grid-projects {
         width: 100%;
         max-width: 1280px;
-        display: block;
         /* padding: 0 20rem; */
         margin: 10rem auto;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(350px, 0.7fr));
         gap: 4rem 1rem;
         box-sizing: border-box;
-        /* place-items: center center; */
+        justify-content: center;
     }
 
 
@@ -499,150 +469,136 @@
 
 /* #region mediaqueries */
 
+@media (max-width: 965px) {
+    .fast-ninja {
+        width:12rem;
+    }
+}
 
-/* @media (max-width: 1375px) {
-        .grid-projects {
-            grid-template-columns: minmax(320px, 1fr);
-        }
-    } */
-
-@media (max-width: 1150px) {
-        .right-menu {
-            transition: 1s;
-            padding-right: 18rem;
-        }
-
-        .fast-ninja {
-            width:12rem;
-        }
-/* 
-        .grid-projects {
-            padding: 0 15rem;
-        } */
+@media (max-width: 750px) {
+    html {
+        font-size: 14px;
     }
 
-    @media (max-width: 750px) {
-        html {
-            font-size: 14px;
-        }
-        .btn-hamburguer {
-            display: flex;
-            margin-left:8rem;
-        }
-        .right-menu {
-            border: 1px solid var(--purple-main);
-            border-radius: 5px;
-            padding: 2rem;            
+    .nav {
+        justify-content: space-around;
+    }
+    .btn-hamburguer {
+        box-sizing: border-box;
+        border: 1px solid var(--purple-dark);
+        width: 60px;
+        height: 60px;
+        min-width:60px;
+        background-color: var(--gray);
+        box-shadow: 0px 0px 3px var(--purple-main);
 
-            width: 8rem;
-            height: 1rem;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 2px;
+        flex-direction: row;
+    }
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    .hamburguer {
+        cursor: pointer;
+        box-sizing: border-box;
+        display: block;
+        width: 60px;
+        height: 60px;
+        border-top: 2px solid var(--purple-main);
+        margin-top: 11px;
 
-            visibility: hidden;
-            overflow-y: hidden;
+    }
 
-            position: absolute;
-            margin-left: auto;
-            margin-right: auto;
-            left: 0;
-            right: -15rem;
-            top: 6.5rem;    
+    .hamburguer::after, .hamburguer::before {
+        box-sizing: border-box;
+        content: '';
+        display: block;
+        width: 100%;
+        border-top: 2px solid var(--purple-main);
+        margin-top:14px;
+        position: relative;
+        transition: 0.4s;
+    }
 
-            background: linear-gradient(45deg, rgb(61, 60, 66) 50%, rgb(100, 99, 99));
+    .right-menu {
+        border: 1px solid var(--purple-main);
+        border-radius: 5px;         
 
-            transition: 0.5s;
-        }   
+        width: 12rem;
+        height: 0;
 
-        .menu-items {
-            padding-left: 0;
-            padding-top:1rem;
-            padding-bottom:1rem;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-            visibility: hidden;
-            overflow-y: hidden;
-        }
+        visibility: hidden;
+        overflow-y: hidden;
 
-        .btn-hamburguer::after {
-            content: '';
-            
-            width: 5px;
-            height: 5px;
-            background: transparent;
-            position: absolute;
-            top:4.4rem;
-            z-index: -1;
-            transform: rotate(45deg);
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        left:-4rem;
+        top: 5rem;    
 
-            visibility: hidden;
-            transition: 1s;
-        }
+        background: linear-gradient(45deg, rgb(61, 60, 66) 50%, rgb(100, 99, 99));
 
-        .right-menu.active {
-            visibility: visible;
-            height: 10rem;
-        }
+        transition: 0.5s;
+    }   
 
-        .menu-items.active {
-            visibility: visible;
-            /* overflow-y: auto; */
-        }
+    .menu-items {
+        padding: 1rem 0;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
 
-        .btn-hamburguer.active::after {
-            visibility: visible;
-            border: 1px solid var(--purple-main);
-            background: linear-gradient(var(--purple-dark), var(--purple-main));
-            width: 50px;
-            height: 50px;
-            transition: 1s;
-        }
+        visibility: hidden;
+        /* overflow-y: auto; */
+    }
 
-        .btn-hamburguer.active .hamburguer {
-            border-top-color: transparent;
-        }
-
-        .btn-hamburguer.active .hamburguer::before {
-            transform: rotate(135deg);
-        }
-
-        .btn-hamburguer.active .hamburguer::after {
-            transform: rotate(-135deg);
-            top: -15px;
-        }
+    .btn-hamburguer::after {
+        content: '';
         
-        /* .grid-projects {
-            padding: 0 5rem;
-        } */
+        width: 5px;
+        height: 5px;
+        position: absolute;
+        top:4.2rem;
+        z-index: -1;
+
+        visibility: hidden;
     }
 
-    @media (max-width: 535px) {
-        .left-logo {
-            gap: 1%;
-        }
-        .btn-hamburguer {
-            margin-left:0;
-            transition: 0.5s;
-        }
-        .btn-hamburguer::after {
-            content: '';
-            
-            width: 50px;
-            height: 50px;
-            background: transparent;
-            position: absolute;
-            top:5.5rem;
-            z-index: 1;
-            transform: rotate(45deg);
-
-            visibility: hidden;
-            transition: 0.5s;
-        }
+    .right-menu.active {
+        visibility: visible;
+        height: 15rem;
     }
+
+    .menu-items.active {
+        visibility: visible;
+    }
+
+    .btn-hamburguer.active::after {
+        visibility: visible;
+        border: 1px solid var(--purple-main);
+        width: 0; 
+        height: 0; 
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 15px solid var(--purple-main);
+    }
+
+    .btn-hamburguer.active .hamburguer {
+        border-top-color: transparent;
+    }
+
+    .btn-hamburguer.active .hamburguer::before {
+        transform: rotate(135deg);
+    }
+
+    .btn-hamburguer.active .hamburguer::after {
+        transform: rotate(-135deg);
+        top: -15px;
+    }
+}
 
 /* #endregion mediaqueries */
 
@@ -652,17 +608,17 @@
         <div class="left-logo">
             <img src="ninja_working_at_desk_purple.svg" alt="ninja logo" srcset="" class="ninja-svg">
             <strong class="fast-ninja">F A S T • N I N J A</strong>
-            <button id="btn-hamburguer" class="btn-hamburguer">
-                <span class="hamburguer"></span>
-            </button>
         </div>
-        <div id="right-menu" class="right-menu">
-            <ul id="menu-items" class="menu-items">
-                <li class="menu-item un"><a class="navlinks" href="#welcome">About</a></li>
-                <li class="menu-item un"><a class="navlinks" href="#projects">Projects</a></li>
-                <li class="menu-item un"><a class="navlinks" href="#contact">Contact</a></li>
-            </ul>
-        </div>
+        <button id="btn-hamburguer" class="btn-hamburguer">
+            <div id="right-menu" class="right-menu">
+                <ul id="menu-items" class="menu-items">
+                    <li class="menu-item un"><a class="navlinks" href="#welcome">About</a></li>
+                    <li class="menu-item un"><a class="navlinks" href="#projects">Projects</a></li>
+                    <li class="menu-item un"><a class="navlinks" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <span id="span-hamburguer" class="hamburguer"></span>
+        </button>
     </nav>
     <section id="welcome" class="welcome">
         <p class="title-large">Hello! Welcome to my portfolio webpage!</p>
@@ -799,17 +755,47 @@
 
 
         // #region responsive hamburguer button
+        var hamburguerButtonSpan = document.getElementById("span-hamburguer")
         var hamburguerButton = document.getElementById("btn-hamburguer")
         var rightMenu = document.getElementById("right-menu")
         var menuItems = document.getElementById("menu-items")
         
-        function handleToggleMenu() {
+        function handleToggleMenu(event) {
+            if(event.type === 'touchstart') event.preventDefault();
+            event.stopPropagation();
+
             rightMenu.classList.toggle("active");
             hamburguerButton.classList.toggle("active");
-            menuItems.classList.toggle("active")
+            menuItems.classList.toggle("active");
+
+            handleClickOutside(rightMenu, ()=> {
+                rightMenu.classList.toggle("active");
+                hamburguerButton.classList.toggle("active");
+                menuItems.classList.toggle("active");
+            })
+        }
+
+        function handleClickOutside(targetElement, callback) {
+            const html = document.documentElement;
+
+            function handleHTMLClick(event) {
+                if(!targetElement.contains(event.target)) {
+                    targetElement.removeAttribute('data-target');
+                    html.removeEventListener('click', handleHTMLClick);
+                    html.removeEventListener('touchstart', handleHTMLClick);
+                    callback();
+                }
+            }
+
+            if (!targetElement.hasAttribute('data-target')) {
+                html.addEventListener('click', handleHTMLClick);
+                html.addEventListener('touchstart', handleHTMLClick);
+                targetElement.setAttribute('data-target', '');
+            }
         }
         
-        hamburguerButton.addEventListener('click', handleToggleMenu);
+        hamburguerButtonSpan.addEventListener('click', handleToggleMenu);
+        hamburguerButtonSpan.addEventListener('touchstart', handleToggleMenu);
         
         // #endregion responsive hamburguer button
    </script>
